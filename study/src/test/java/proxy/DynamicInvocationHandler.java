@@ -22,8 +22,6 @@ public class DynamicInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        log.info("invoke method name : " + method.getName() + ", args : " + args[0]);
-        // 여기에 필요한 기능을 구현할수 있음.
         Object result = methods.get(method.getName()).invoke(target, args);
 
         return ((String) result).toUpperCase();
